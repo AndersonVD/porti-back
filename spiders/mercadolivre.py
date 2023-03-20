@@ -9,7 +9,7 @@ def mercadoLivre():
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     driver = webdriver.Chrome(
-        executable_path='C:/Users/ander/Documents/Programas/portifolio/backend/chromedriver.exe', options=chrome_options)
+        executable_path='C:/Users/ander/Documents/Programas/portifolio/porti-back/chromedriver.exe', options=chrome_options)
     driver.get('https://lista.mercadolivre.com.br/pao-de-queijo')
     time.sleep(0.5)
     driver.execute_script("window.scrollBy(0, 1000);")
@@ -29,6 +29,7 @@ def mercadoLivre():
 
     itens = []
     for item in range(1, 10):
+        _id = item
         link = div_items[item].find(
             'a', class_='ui-search-link')['href']
         if link[0:4] == "data":
@@ -37,10 +38,10 @@ def mercadoLivre():
         price = div_items[item].find('span', class_='price-tag-fraction').text
         image = div_items[item].find(
             'img', class_='ui-search-result-image__element')['src']
-        itens.append({'title': title, 'price': price,
+        itens.append({"id": _id, 'title': title, 'price': price,
                      'image': image, 'link': link})
 
-    return print(itens)
+    return itens
 
 
 if __name__ == '__main__':

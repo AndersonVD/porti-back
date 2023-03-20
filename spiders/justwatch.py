@@ -11,15 +11,16 @@ def justwatch():
 
     itens = []
     for item in range(len(div_items)):
+        _id = item
         title = div_items[item].find('span', class_="header-title").text
         image = div_items[item].find('img')['src']
         link = "https://www.justwatch.com" + \
             div_items[item].find('a')['href']
         itens.append(
-            {'title': title, 'image': image, 'link': link}
+            {"id": _id, 'title': title, 'image': image, 'link': link}
         )
 
-    return print(itens)
+    return itens
 
 
 if __name__ == '__main__':

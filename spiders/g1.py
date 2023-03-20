@@ -12,6 +12,7 @@ def g1():
     itens = []
     for item in range(1, 10):
         try:
+            _id = item
             title = div_items[item].find(
                 'div', class_="widget--info__title product-color").text.replace('\n', '').strip()
             time_ago = div_items[item].find(
@@ -19,13 +20,13 @@ def g1():
             image = "https:" + div_items[item].find('img')['src']
             link = "https:" + div_items[item].find('a')['href']
             itens.append(
-                {'title': title, 'time_ago': time_ago,
+                {"id": _id, 'title': title, 'time_ago': time_ago,
                     'image': image, 'link': link}
             )
         except:
             continue
 
-    return print(itens)
+    return itens
 
 
 if __name__ == '__main__':
