@@ -4,4 +4,3 @@ selenium
 requests
 uvicorn
 gunicorn
-```
