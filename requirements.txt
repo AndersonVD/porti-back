@@ -1,3 +1,7 @@
 fastapi
 beautifulsoup4
 selenium
+requests
+uvicorn
+gunicorn
+```
