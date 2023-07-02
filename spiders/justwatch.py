@@ -2,9 +2,9 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def justwatch():
-    # query = busca.replace(' ', '%20')
-    page = requests.get('https://www.justwatch.com/br/busca?q=vingadores')
+def justwatch(busca):
+    query = busca.replace(' ', '%20')
+    page = requests.get(f'https://www.justwatch.com/br/busca?q={query}')
 
     soup = BeautifulSoup(page.text, 'html.parser')
     div_items = soup.findAll('div', class_="title-list-row__row")

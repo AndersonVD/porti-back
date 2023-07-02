@@ -6,10 +6,7 @@ from spiders.mercadolivre import mercadoLivre
 
 app = FastAPI()
 
-origins = [
-    "http://localhost",
-    "http://localhost:3000",
-]
+origins = ["*"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -20,20 +17,21 @@ app.add_middleware(
 
 
 @app.get("/g1")
-def get_g1():
-    return dummy_g1
+def get_g1(busca: str):
+    return g1(busca)
+    # return dummy_g1
 
 
 @app.get("/meli")
-def get_meli():
-    return dummy_meli
-    # return mercadoLivre()
+def get_meli(busca: str):
+    # return dummy_meli
+    return mercadoLivre(busca)
 
 
 @app.get("/filmes")
-def get_filmes():
-    return dummy_filmes
-    # return justwatch()
+def get_filmes(busca: str):
+    # return dummy_filmes
+    return justwatch(busca)
 
 
 dummy_g1 = [

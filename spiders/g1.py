@@ -2,8 +2,9 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def g1():
-    page = requests.get('https://g1.globo.com/busca/?q=bbb')
+def g1(busca):
+    query = busca.replace(' ', '%20')
+    page = requests.get(f'https://g1.globo.com/busca/?q={query}')
 
     soup = BeautifulSoup(page.text, 'html.parser')
     div_items = soup.findAll(
